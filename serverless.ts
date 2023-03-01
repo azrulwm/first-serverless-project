@@ -9,6 +9,17 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: "aws",
     runtime: "nodejs14.x",
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: "Allow",
+            Action: "comprehend:DetectSentiment",
+            Resource: "*",
+          },
+        ],
+      },
+    },
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
